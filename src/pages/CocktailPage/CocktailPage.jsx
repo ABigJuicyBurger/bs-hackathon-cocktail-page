@@ -25,9 +25,14 @@ const CocktailPage = () => {
   if (!cocktail) {
     return <div>Making your drink...</div>;
   }
-  const instructions = cocktail.strInstructions
+  const filteredInstructions = cocktail.strInstructions.replace(
+    /\b\d+\./g,
+    "."
+  );
+
+  const instructions = filteredInstructions
     .split(".")
-    .map((step, index) => step.trim())
+    .map((step) => step.trim())
     .filter((step) => step.length > 0);
 
   return (
@@ -40,13 +45,13 @@ const CocktailPage = () => {
           className="cocktail__image"
         />
         <h3 className="cocktail__instructions">Instructions</h3>
-        <ol className="cocktail__steps">
+        <ul className="cocktail__steps">
           {instructions.map((step, index) => (
             <li key={index} className="cocktail__step">
               {step}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   );

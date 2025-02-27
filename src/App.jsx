@@ -1,9 +1,8 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Gallery from "./components/Gallery/Gallery.jsx";
+import Header from "./Components/Header/Header.jsx";
+import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import CocktailPage from "./pages/CocktailPage/CocktailPage.jsx";
 import "./App.scss";
-
 
 function App() {
   // TESTING GIT BRANCHING
