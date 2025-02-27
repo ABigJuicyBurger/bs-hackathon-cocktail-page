@@ -1,10 +1,10 @@
 import './RecipeCard.scss'
 
-const RecipeCard = () => {
+const RecipeCard = ({ title, image, alt }) => {
     return (
       <article className = "recipecard">
-        <h1 className = "recipecard__title">Recipe Name</h1>
-        <p className = "recipecard__description">Recipe Description</p>
+        <h1 className = "recipecard__title">{title}</h1>
+        <img className = "recipecard__image" src ={image + "/small"} alt ={alt}/>
       </article>
     )
 };

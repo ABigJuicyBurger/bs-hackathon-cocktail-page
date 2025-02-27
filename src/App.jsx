@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Gallery from "./components/Gallery/Gallery.jsx";
 import "./App.css";
 

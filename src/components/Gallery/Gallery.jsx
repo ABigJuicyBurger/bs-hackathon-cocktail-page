@@ -32,7 +32,11 @@ const Gallery = () => {
                     key={drink.idDrink} 
                     to={`/cocktail/${drink.idDrink}`} 
                     className="gallery__link">
-                    <RecipeCard />
+                    <RecipeCard 
+                        title={drink.strDrink} 
+                        image={drink.strDrinkThumb} 
+                        alt ={drink.strDrink}
+                    />
                 </Link>
             ))}
         </section>
