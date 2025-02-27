@@ -1,0 +1,71 @@
+// Import Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap");
+
+// Intro container
+.intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+// "Pick" text styling
+.intro-overline {
+  font-family: "Pacifico", cursive;
+  font-size: 128px;
+  font-weight: normal;
+  background: linear-gradient(135deg, #fff5cf, #18a0fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  line-height: 1;
+}
+
+// "YOUR POISON" text styling
+.intro-copy {
+  font-family: "Montserrat", sans-serif;
+  font-size: 120px;
+  font-weight: bold;
+  color: linear-gradient(135deg, #fff5cf, #18a0fb);
+  background: linear-gradient(135deg, #fff5cf, #18a0fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .intro-overline {
+    font-size: 96px;
+
+    .intro-copy {
+      font-size: 90px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .intro-overline {
+      font-size: 64px;
+    }
+
+    .intro-copy {
+      font-size: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .intro-overline {
+      font-size: 48px;
+    }
+
+    .intro-copy {
+      font-size: 45px;
+    }
+  }
+}

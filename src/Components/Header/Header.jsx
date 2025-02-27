@@ -1,9 +1,11 @@
+import React from "react";
+import "../../Styles/Header.scss";
+
 function Header() {
   return (
-    <div>
-      <img src="" alt="Cocktail image" />
-      <h1>Cocktail Fetcher</h1>
-    </div>
+    <header className="header">
+      <h1 className="header-title">FLAVO</h1>
+    </header>
   );
 }
 
