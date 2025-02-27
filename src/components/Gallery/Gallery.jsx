@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import RecipeCard from "/src/components/RecipeCard/RecipeCard.jsx";
 import "../../Styles/Gallery.scss";
 
-const Gallery = ({ searchResults: filterCocktails, defaultCocktails }) => {
-  // Show loading when default cocktails aren't loaded yet
+const Gallery = ({ filterCocktails, defaultCocktails }) => {
   if (!defaultCocktails && !filterCocktails) {
     return <div>Loading cocktails...</div>;
   }
 
-  // Determine which dataset to display
   const displayData =
-    filterCocktails || (defaultCocktails && defaultCocktails.drinks);
+    filterCocktails && filterCocktails.length > 0
+      ? filterCocktails
+      : defaultCocktails;
 
-  if (!displayData) return <div>No cocktails available</div>;
+  if (!displayData || displayData.length === 0)
+    return <div>No cocktails available</div>;
 
   return (
     <section className="gallery">

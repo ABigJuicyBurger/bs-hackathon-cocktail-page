@@ -6,16 +6,16 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 function GalleryPage() {
   const [cocktails, setCocktails] = useState([]);
   const [filterCocktails, setFilterCocktails] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch all cocktails when the page loads
   const fetchCocktails = async () => {
-    console.log("Fetching cocktails...");
+    setLoading(true);
     try {
       const response = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
       );
       console.log("API Response:", response.data);
-
       if (response.data && response.data.drinks) {
         setCocktails(response.data.drinks);
         setFilterCocktails(response.data.drinks);
@@ -24,8 +24,10 @@ function GalleryPage() {
         setFilterCocktails([]);
       }
     } catch (error) {
-      console.error("Error at gallerypage:", error);
-      setCocktails([]);
+      console.error("Error fetching cocktails:", error);
+      setError("Failed to fetch cocktails");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,14 +37,21 @@ function GalleryPage() {
   };
 
   useEffect(() => {
-    console.log("Running useEffect for fetching cocktails");
     fetchCocktails();
   }, []);
+
+  if (loading) {
+    return <div>Loading cocktails...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
       <SearchBar onFilter={handleFilterCocktails} />
-      <Gallery filterCocktails={filterCocktails} />
+      <Gallery filterCocktails={filterCocktails} defaultCocktails={cocktails} />
     </>
   );
 }

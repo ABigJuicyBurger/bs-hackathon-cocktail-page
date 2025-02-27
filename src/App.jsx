@@ -3,9 +3,7 @@ import Header from "./Components/Header/Header.jsx";
 import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import CocktailPage from "./pages/CocktailPage/CocktailPage.jsx";
 import "./App.scss";
-import SearchBar from "./Components/SearchBar/SearchBar";
 import Intro from "./Components/Intro/Intro";
-
 
 function App() {
   // TESTING GIT BRANCHING
