@@ -1,46 +1,36 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import RecipeCard from '/src/components/RecipeCard/RecipeCard.jsx'
-import './Gallery.scss'
+import { Link } from "react-router-dom";
+import RecipeCard from "/src/components/RecipeCard/RecipeCard.jsx";
+import "./Gallery.scss";
 
-const Gallery = () => {
-    const [cocktails, setCocktails] = useState(null);
+const Gallery = ({ searchResults, defaultCocktails }) => {
+  // Show loading when default cocktails aren't loaded yet
+  if (!defaultCocktails && !searchResults) {
+    return <div>Loading cocktails...</div>;
+  }
 
-    const fetchCocktails = async () => {
-        try {
-            const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail");
-            setCocktails(response.data);
-        } catch (error) {
-            console.error(error);
-            setCocktails(null);
-        }
-    }
+  // Determine which dataset to display
+  const displayData =
+    searchResults || (defaultCocktails && defaultCocktails.drinks);
 
-    useEffect(() => {
-        fetchCocktails();
-    }, []);
+  if (!displayData) return <div>No cocktails available</div>;
 
-    if (!cocktails || !cocktails.drinks) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <section className = "gallery"> 
-            {cocktails.drinks.map((drink) => (
-                <Link 
-                    key={drink.idDrink} 
-                    to={`/cocktail/${drink.idDrink}`} 
-                    className="gallery__link">
-                    <RecipeCard 
-                        title={drink.strDrink} 
-                        image={drink.strDrinkThumb} 
-                        alt ={drink.strDrink}
-                    />
-                </Link>
-            ))}
-        </section>
-    )
+  return (
+    <section className="gallery">
+      {displayData.slice(0, 6).map((drink) => (
+        <Link
+          key={drink.idDrink}
+          to={`/cocktail/${drink.idDrink}`}
+          className="gallery__link"
+        >
+          <RecipeCard
+            title={drink.strDrink}
+            image={drink.strDrinkThumb}
+            alt={drink.strDrink}
+          />
+        </Link>
+      ))}
+    </section>
+  );
 };
 
-export default Gallery
+export default Gallery;

@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 import Gallery from "./components/Gallery/Gallery.jsx";
 import "./App.css";
 import Header from "./Components/Header/Header";
@@ -11,7 +11,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Gallery />
+        <Header />
+        <SearchBar />
+        {/* <Gallery /> */}
       </div>
     </BrowserRouter>
   );
