@@ -3,19 +3,23 @@ import Gallery from "./components/Gallery/Gallery.jsx";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import SearchBar from "./Components/SearchBar/SearchBar";
+import Intro from "./Components/Intro/Intro";
 
 function App() {
   // TESTING GIT BRANCHING
   // so wwen pushing let leader merge through sending PR, then pull when you make changes
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <SearchBar />
-        {/* <Gallery /> */}
-      </div>
-    </BrowserRouter>
+    <>
+      <Header />
+      <Intro />
+      <SearchBar />
+      <BrowserRouter>
+        <div className="App">
+          <Gallery />
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 

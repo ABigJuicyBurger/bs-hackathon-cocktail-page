@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import RecipeCard from "/src/components/RecipeCard/RecipeCard.jsx";
-import "./Gallery.scss";
+import "../../Styles/Gallery.scss";
 
 const Gallery = ({ searchResults: filterCocktails, defaultCocktails }) => {
   // Show loading when default cocktails aren't loaded yet
