@@ -25,9 +25,11 @@ const Gallery = () => {
         return <div>Loading...</div>;
     }
 
+    const limitedCocktails = cocktails.drinks.slice(0, 6);
+
     return (
         <section className = "gallery"> 
-            {cocktails.drinks.map((drink) => (
+            {limitedCocktails.map((drink) => (
                 <Link 
                     key={drink.idDrink} 
                     to={`/cocktail/${drink.idDrink}`} 
