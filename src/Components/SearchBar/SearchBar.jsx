@@ -25,8 +25,15 @@ function SearchBar() {
   };
 
   useEffect(() => {
+    // only fetch on input
+    if (input) {
+      fetchUserCocktails();
+    }
+  }, [input]); // on input change
+
+  useEffect(() => {
     fetchUserCocktails();
-  }, []); // on load
+  }, []);
 
   function handleClick() {
     console.log("clicked!");
