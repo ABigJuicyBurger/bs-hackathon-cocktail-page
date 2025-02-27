@@ -1,25 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RecipePage from './Components/RecipePage/RecipePage';
-import Header from "./Components/Header/Header";
-import SearchBar from "./Components/SearchBar/SearchBar";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Gallery from "./components/Gallery/Gallery.jsx";
+import CocktailPage from "./pages/CocktailPage/CocktailPage.jsx";
 import "./App.scss";
+
 
 function App() {
   // TESTING GIT BRANCHING
   // so wwen pushing let leader merge through sending PR, then pull when you make changes
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <SearchBar />
-        <Gallery />
+    <>
+      <Header />
+      <BrowserRouter>
         <Routes>
-          <Route path="/cocktail/:id" element={<RecipePage />} />
+          <Route path="/" element={<GalleryPage />} />
+          <Route path="/cocktail/:id" element={<CocktailPage />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   );
 }
 
