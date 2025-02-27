@@ -1,10 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Gallery from "./components/Gallery/Gallery.jsx";
 import "./App.css";
 
 function App() {
   // TESTING GIT BRANCHING
-  // so wwhen pushing let leader merge through sending PR, then pull when you make changes
+  // so wwen pushing let leader merge through sending PR, then pull when you make changes
 
-  return <></>;
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Gallery />
+      </div>
+    </BrowserRouter>
+  );
+
 }
 
 export default App;
