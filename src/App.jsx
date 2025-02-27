@@ -3,6 +3,9 @@ import Header from "./Components/Header/Header.jsx";
 import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import CocktailPage from "./pages/CocktailPage/CocktailPage.jsx";
 import "./App.scss";
+import SearchBar from "./Components/SearchBar/SearchBar";
+import Intro from "./Components/Intro/Intro";
+
 
 function App() {
   // TESTING GIT BRANCHING
@@ -11,11 +14,12 @@ function App() {
   return (
     <>
       <Header />
+      <Intro />
+      <SearchBar />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<GalleryPage />} />
-          <Route path="/cocktail/:id" element={<CocktailPage />} />
-        </Routes>
+        <div className="App">
+          <GalleryPage />
+        </div>
       </BrowserRouter>
     </>
   );

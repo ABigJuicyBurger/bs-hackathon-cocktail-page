@@ -1,12 +1,14 @@
-import './RecipeCard.scss'
+import "../../Styles/RecipeCard.scss";
 
 const RecipeCard = ({ title, image, alt }) => {
-    return (
-      <article className = "recipecard">
-        <img className = "recipecard__image" src ={image + "/small"} alt ={alt}/>
-        <h1 className = "recipecard__title">{title}</h1>
+  return (
+    <div className="recipelist">
+      <article className="recipecard">
+        <img className="recipecard__image" src={image + "/small"} alt={alt} />
+        <h1 className="recipecard__title">{title}</h1>
       </article>
-    )
+    </div>
+  );
 };
 
-export default RecipeCard
+export default RecipeCard;
