@@ -1,48 +1,52 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Gallery from "../Gallery/Gallery";
 
 function SearchBar() {
-  // search bar will contain what user in putting + cocktail info + return filtered cocktails
   const [input, setInput] = useState("");
-  const [cocktails, setCocktails] = useState([]);
+  const [filterCocktails, setFilterCocktails] = useState(null);
+  const [defaultCocktails, setDefaultCocktails] = useState(null);
 
-  const baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=";
-
-  // another fnxn for filter buttons
-
-  function handleTextChange(event) {
-    setInput(event.target.value); // user types
-    // console.log(input);
-  }
-
-  const fetchUserCocktails = async () => {
-    // accept current input instead
-    const lowerCaseinput = input.toLowerCase();
-    const response = await axios.get(`${baseUrl}${lowerCaseinput}`); // this will fetch user search
-    const cocktailResult = response.data.drinks;
-    setCocktails(cocktailResult);
-    console.log(cocktails);
+  const fetchDefaultCocktails = async () => {
+    try {
+      const response = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
+      );
+      setDefaultCocktails(response.data);
+    } catch (error) {
+      console.error("Failed to fetch default cocktails:", error);
+    }
   };
 
+  // Fetch default cocktails on component mount
   useEffect(() => {
-    // only fetch on input
-    if (input) {
-      fetchUserCocktails();
-    }
-  }, [input]); // on input change
-
-  useEffect(() => {
-    fetchUserCocktails();
+    fetchDefaultCocktails();
   }, []);
 
+  function handleTextChange(event) {
+    setInput(event.target.value);
+  }
+
+  const searchCocktails = async (searchInput) => {
+    try {
+      const firstLetter = searchInput.charAt(0).toLowerCase();
+      const response = await axios.get(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`
+      );
+      setFilterCocktails(response.data.drinks);
+    } catch (error) {
+      console.error("Search failed:", error);
+      setFilterCocktails(null);
+    }
+  };
+
   function handleClick() {
-    console.log("clicked!");
-    fetchUserCocktails(); // only fetch on click
+    searchCocktails(input);
   }
 
   return (
     <>
-      <div>
+      <div className="searchBar">
         <label htmlFor="name">Search up a cocktail</label>
         <input
           name="name"
@@ -50,8 +54,14 @@ function SearchBar() {
           value={input}
           placeholder="Gin and Tonic"
           onChange={handleTextChange}
-        ></input>
+        />
         <button onClick={handleClick}>Search</button>
+      </div>
+      <div className="gallery">
+        <Gallery
+          searchResults={filterCocktails}
+          defaultCocktails={defaultCocktails}
+        />
       </div>
     </>
   );
