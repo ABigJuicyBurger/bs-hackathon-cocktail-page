@@ -35,6 +35,13 @@ const CocktailPage = () => {
     .map((step) => step.trim())
     .filter((step) => step.length > 0);
 
+  const ingredients = Object.keys(cocktail) // Get all keys of the cocktail object
+    .filter((key) => key.startsWith("strIngredient")) // Filter out only keys starting with "strIngredient"
+    .map((key) => cocktail[key]) // Map to get only the ingredient values
+    .filter((ingredient) => ingredient !== null); // Filter out any null values
+
+  console.log(ingredients);
+
   return (
     <section className="cocktail">
       <div className="cocktail__container">
@@ -44,6 +51,14 @@ const CocktailPage = () => {
           alt={cocktail.strDrink}
           className="cocktail__image"
         />
+        <h3 className="cocktail__ingredient-title">Ingredients</h3>
+        <ul className="cocktail__ingredients">
+          {ingredients.map((ingredient, index) => (
+            <li key={index} className="cocktail__ingredient">
+              {ingredient}
+            </li>
+          ))}
+        </ul>
         <h3 className="cocktail__instructions">Instructions</h3>
         <ul className="cocktail__steps">
           {instructions.map((step, index) => (
