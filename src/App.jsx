@@ -14,12 +14,11 @@ function App() {
   return (
     <>
       <Header />
-      <Intro />
-      <SearchBar />
       <BrowserRouter>
-        <div className="App">
-          <GalleryPage />
-        </div>
+        <Routes>
+          <Route path="/" element={<GalleryPage />} />
+          <Route path="/cocktail/:id" element={<CocktailPage />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
