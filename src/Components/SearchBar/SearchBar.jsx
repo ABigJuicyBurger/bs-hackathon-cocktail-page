@@ -4,13 +4,8 @@ import Gallery from "../Gallery/Gallery";
 
 function SearchBar() {
   const [input, setInput] = useState("");
-  const [searchResults, setSearchResults] = useState(null);
+  const [filterCocktails, setFilterCocktails] = useState(null);
   const [defaultCocktails, setDefaultCocktails] = useState(null);
-
-  // Fetch default cocktails on component mount
-  useEffect(() => {
-    fetchDefaultCocktails();
-  }, []);
 
   const fetchDefaultCocktails = async () => {
     try {
@@ -23,22 +18,25 @@ function SearchBar() {
     }
   };
 
+  // Fetch default cocktails on component mount
+  useEffect(() => {
+    fetchDefaultCocktails();
+  }, []);
+
   function handleTextChange(event) {
     setInput(event.target.value);
   }
 
   const searchCocktails = async (searchInput) => {
-    if (!searchInput) return;
-
     try {
       const firstLetter = searchInput.charAt(0).toLowerCase();
       const response = await axios.get(
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`
       );
-      setSearchResults(response.data.drinks);
+      setFilterCocktails(response.data.drinks);
     } catch (error) {
       console.error("Search failed:", error);
-      setSearchResults(null);
+      setFilterCocktails(null);
     }
   };
 
@@ -61,7 +59,7 @@ function SearchBar() {
       </div>
       <div className="gallery">
         <Gallery
-          searchResults={searchResults}
+          searchResults={filterCocktails}
           defaultCocktails={defaultCocktails}
         />
       </div>

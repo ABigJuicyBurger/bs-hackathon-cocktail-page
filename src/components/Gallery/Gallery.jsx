@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import RecipeCard from "/src/components/RecipeCard/RecipeCard.jsx";
 import "./Gallery.scss";
 
-const Gallery = ({ searchResults, defaultCocktails }) => {
+const Gallery = ({ searchResults: filterCocktails, defaultCocktails }) => {
   // Show loading when default cocktails aren't loaded yet
-  if (!defaultCocktails && !searchResults) {
+  if (!defaultCocktails && !filterCocktails) {
     return <div>Loading cocktails...</div>;
   }
 
   // Determine which dataset to display
   const displayData =
-    searchResults || (defaultCocktails && defaultCocktails.drinks);
+    filterCocktails || (defaultCocktails && defaultCocktails.drinks);
 
   if (!displayData) return <div>No cocktails available</div>;
 
