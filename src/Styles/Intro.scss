@@ -16,7 +16,10 @@
   font-family: "Pacifico", cursive;
   font-size: 128px;
   font-weight: normal;
-  color: linear-gradient(135deg, #fff5cf, #18a0fb);
+  background: linear-gradient(135deg, #fff5cf, #18a0fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   line-height: 1;
 }
@@ -27,6 +30,10 @@
   font-size: 120px;
   font-weight: bold;
   color: linear-gradient(135deg, #fff5cf, #18a0fb);
+  background: linear-gradient(135deg, #fff5cf, #18a0fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   line-height: 1;
   text-transform: uppercase;
