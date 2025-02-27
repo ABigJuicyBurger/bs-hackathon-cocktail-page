@@ -1,6 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import Gallery from "./components/Gallery/Gallery.jsx";
 import "./App.css";
+import Header from "./Components/Header/Header";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
   // TESTING GIT BRANCHING
@@ -13,7 +15,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-
 }
 
 export default App;
