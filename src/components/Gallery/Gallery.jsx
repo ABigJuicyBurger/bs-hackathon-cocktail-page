@@ -12,6 +12,7 @@ const Gallery = ({ filterCocktails }) => {
 
   const cocktailLimit = filterCocktails.slice(0, 6); // Limit the number of cocktails
 
+
   return (
     <section className="gallery">
       {cocktailLimit.map((drink) => (
