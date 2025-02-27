@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
 import SearchBar from "./Components/SearchBar/SearchBar";
+import Intro from "./Components/Intro/Intro";
 
 function App() {
   // TESTING GIT BRANCHING
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
       <Header />
+      <Intro />
       <SearchBar />
     </>
   );

@@ -1,0 +1,45 @@
+/* Import Aclonica font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
+
+/* Header container */
+.header {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+}
+
+/* Header text*/
+.header-title {
+  font-family: "Aclonica", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .header-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .header-logo {
+    height: 30px;
+  }
+}
