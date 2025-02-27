@@ -1,9 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
-import Gallery from "./components/Gallery/Gallery.jsx";
-import "./App.css";
-import Header from "./Components/Header/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./Components/Header/Header.jsx";
+import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
+import CocktailPage from "./pages/CocktailPage/CocktailPage.jsx";
+import "./App.scss";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Intro from "./Components/Intro/Intro";
+
 
 function App() {
   // TESTING GIT BRANCHING
@@ -16,7 +18,7 @@ function App() {
       <SearchBar />
       <BrowserRouter>
         <div className="App">
-          <Gallery />
+          <GalleryPage />
         </div>
       </BrowserRouter>
     </>
