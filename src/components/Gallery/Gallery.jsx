@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import RecipeCard from "/src/components/RecipeCard/RecipeCard.jsx";
-import "../../Styles/Gallery.scss";
+import "./Gallery.scss";
 
 const Gallery = ({ filterCocktails, defaultCocktails }) => {
   if (!defaultCocktails && !filterCocktails) {

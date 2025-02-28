@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../../Styles/Cocktail.scss";
+import "./CocktailPage.scss";
 
 const CocktailPage = () => {
   const { id } = useParams();

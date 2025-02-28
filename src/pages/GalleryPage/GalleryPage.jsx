@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Gallery from "../../components/Gallery/Gallery";
+import Intro from "../../Components/Intro/Intro";
 import SearchBar from "../../Components/SearchBar/SearchBar";
+import Gallery from "../../Components/Gallery/Gallery";
+import "./GalleryPage.scss";
 
 function GalleryPage() {
   const [cocktails, setCocktails] = useState([]);
@@ -49,10 +51,11 @@ function GalleryPage() {
   }
 
   return (
-    <>
+    <div className="gallerypage">
+      <Intro />
       <SearchBar onFilter={handleFilterCocktails} />
       <Gallery filterCocktails={filterCocktails} defaultCocktails={cocktails} />
-    </>
+    </div>
   );
 }
 
